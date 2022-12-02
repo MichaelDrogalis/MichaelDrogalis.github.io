@@ -5,14 +5,15 @@ module.exports = {
   ],
   theme: {
     colors: {
-      "gray-100": "#fcfcfc",
-      "gray-200": "#fdfdfd",
-      "gray-300": "#cad0d2",
-      "gray-400": "#b4bcc1",
-      "gray-500": "#a4afb3",
-      "gray-600": "#92999c",
-      "gray-700": "#232b2e",
-      "gray-800": "#181d1f"
+      "gray-100": "#f9f9f9",
+      "gray-200": "#f2f2f2",
+      "gray-300": "#dadada",
+      "gray-400": "#d4d4d4",
+      "gray-500": "#b8b8b8",
+      "gray-600": "#989898",
+      "gray-700": "#787878",
+      "gray-800": "#323232",
+      "gray-900": "#232323"
     },
     fontFamily: {
       "body": ["Inter", "Helvetica", "Arial", "sans-serif"],
