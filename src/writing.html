@@ -1,0 +1,54 @@
+---
+permalink: /writing/
+---
+<!doctype html>
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		    })(window,document,'script','dataLayer','GTM-N4V97FDR');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Writing by Michael Drogalis.">
+    <title>Writing — Michael Drogalis</title>
+
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900">
+  </head>
+  <body class="bg-gray-200 font-body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4V97FDR"
+		      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container w-fit md:w-[48rem] mx-auto">
+      <div class="shadow-md rounded-md bg-gray-100 my-10 p-5 md:p-10">
+        <a class="text-sm text-gray-600 hover:text-gray-900" href="/">&larr; Michael Drogalis</a>
+
+        <h1 class="text-2xl md:text-4xl text-gray-900 mt-6 mb-8">Writing</h1>
+
+        {% for section in collections.posts | groupBySection(sections) %}
+          <section id="{{ section.title | slugify }}" class="mt-10 first:mt-0 scroll-mt-6">
+            <h2 class="text-lg md:text-xl text-purple-700 font-semibold mb-4">
+              {{ section.title }}
+              <span class="text-xs font-normal text-sky-900">({{ section.posts.length }})</span>
+            </h2>
+            <ol class="content grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 leading-relaxed text-gray-800">
+              {% for post in section.posts %}
+                <li>
+                  <a href="{{ post.url }}">{{ post.data.title }}</a>
+                  <p class="text-sm text-gray-600">{{ post.date | readableDate }}</p>
+                </li>
+              {% endfor %}
+            </ol>
+          </section>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

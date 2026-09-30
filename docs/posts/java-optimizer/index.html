@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		    })(window,document,'script','dataLayer','GTM-N4V97FDR');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Java&#39;s optimizer">
+    <title>Java&#39;s optimizer — Michael Drogalis</title>
+
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900">
+  </head>
+  <body class="bg-gray-200 font-body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4V97FDR"
+		      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container w-fit md:w-[48rem] mx-auto">
+      <div class="shadow-md rounded-md bg-gray-100 my-10 p-5 md:p-10">
+        
+        <div class="flex justify-between items-baseline gap-4 text-sm text-gray-600">
+          <a class="hover:text-gray-900" href="/writing/">&larr; Writing</a>
+          
+            <a class="hover:text-gray-900" href="/writing/#java">Java &middot; 5 of 20</a>
+          
+        </div>
+
+        <h1 class="text-2xl md:text-4xl text-gray-900 mt-6 mb-2">Java&#39;s optimizer</h1>
+
+        <time class="block text-sm text-gray-600 mt-2" datetime="2026-09-11">September 11, 2026</time>
+
+        
+          <ul class="flex flex-wrap gap-2 mt-4">
+            
+              <li class="rounded-lg text-slate-200 bg-violet-800 px-2 py-1 text-xs">java</li>
+            
+          </ul>
+        
+
+        <div class="prose content mt-8">
+          <p>😇 Thanks to Java's optimizer, you usually don't need to choose between readable vs. fast code.</p>
+<p><img src="/img/java-optimizer.jpeg" alt=""></p>
+<p>Left on its own, Java will automatically do:</p>
+<p>(1) method inlining: replace a method call with the method's body to eliminate call overhead</p>
+<p>(2) loop unrolling: duplicates the loop body to reduce the number of iterations</p>
+<p>(3) constant hoisting: move expressions that produce the same result on every iteration outside the loop</p>
+<p>(4) branch prediction: guess the outcome of conditional branches to avoid stalling</p>
+<p>(5) speculative optimization: makes assumptions (like types staying stable) to optimize code</p>
+<p>(6) dead code elimination: remove code that has no effect on program behavior</p>
+<p>(7) on-stack replacement (OSR): replace currently running interpreted code with natively compiled, optimized code mid-execution</p>
+<p>You can see some of this in action in the screenshot. On the left is a clearly written class. On the right is an approximation of how Java will optimize it at runtime.</p>
+
+        </div>
+
+        
+          <nav class="mt-12 pt-6 border-t border-gray-300 grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+              <a class="group block rounded-md p-4 hover:bg-gray-200" href="/posts/java-optional/">
+                <span class="block text-xs text-gray-500">&larr; Previous</span>
+                <span class="block mt-1 font-semibold text-gray-900 group-hover:underline">Java Optional</span>
+              </a>
+            
+            
+              <a class="group block rounded-md p-4 hover:bg-gray-200 md:text-right" href="/posts/java-virtual-threads/">
+                <span class="block text-xs text-gray-500">Next &rarr;</span>
+                <span class="block mt-1 font-semibold text-gray-900 group-hover:underline">Java virtual threads</span>
+              </a>
+            
+          </nav>
+        
+      </div>
+    </div>
+  </body>
+</html>

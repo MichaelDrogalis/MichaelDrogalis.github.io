@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		    })(window,document,'script','dataLayer','GTM-N4V97FDR');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Java metaspace">
+    <title>Java metaspace — Michael Drogalis</title>
+
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900">
+  </head>
+  <body class="bg-gray-200 font-body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4V97FDR"
+		      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container w-fit md:w-[48rem] mx-auto">
+      <div class="shadow-md rounded-md bg-gray-100 my-10 p-5 md:p-10">
+        
+        <div class="flex justify-between items-baseline gap-4 text-sm text-gray-600">
+          <a class="hover:text-gray-900" href="/writing/">&larr; Writing</a>
+          
+            <a class="hover:text-gray-900" href="/writing/#java">Java &middot; 13 of 20</a>
+          
+        </div>
+
+        <h1 class="text-2xl md:text-4xl text-gray-900 mt-6 mb-2">Java metaspace</h1>
+
+        <time class="block text-sm text-gray-600 mt-2" datetime="2026-06-24">June 24, 2026</time>
+
+        
+          <ul class="flex flex-wrap gap-2 mt-4">
+            
+              <li class="rounded-lg text-slate-200 bg-violet-800 px-2 py-1 text-xs">java</li>
+            
+          </ul>
+        
+
+        <div class="prose content mt-8">
+          <p>Surprising fact: a Java program can run out of memory without ever allocating an object.</p>
+<p>A few weeks ago, I tried running my product in a low-memory environment. Only 50 megabytes.</p>
+<p>I thought it would work great.</p>
+<p>I benchmarked it in development and saw it only used about 40 megabytes of heap space.</p>
+<p>But when I deployed it, the OS instantly killed the JVM because it depleted memory.</p>
+<p>Why?</p>
+<p>I learned that heap space is not the only memory the JVM uses.</p>
+<p>💡I ran out of memory in something called Metaspace.</p>
+<p><img src="/img/java-metaspace.jpeg" alt=""></p>
+<p>Metaspace is a special area of memory that holds things like:</p>
+<ul>
+<li>class definitions</li>
+<li>class loaders</li>
+<li>method and field data</li>
+</ul>
+<p>Unlike the heap, metaspace resides in native memory, which is why I didn't see it in my local benchmark.</p>
+<p>It also grows dynamically and is unbounded by default.</p>
+<p>When I ran <code>jcmd &lt;process id&gt; VM.metaspace</code>, I saw that yes, my 40 megabytes of heap plus about 30 more megabytes of metaspace meant I exceeded total available memory.</p>
+<p>Lastly, I learned that you can forcibly bound how much memory gets allocated to metaspace with the JVM flag: -XX:MaxMetaspaceSize=256m</p>
+<p>😅 Always learning something new about the JVM.</p>
+
+        </div>
+
+        
+          <nav class="mt-12 pt-6 border-t border-gray-300 grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+              <a class="group block rounded-md p-4 hover:bg-gray-200" href="/posts/java-string-interning/">
+                <span class="block text-xs text-gray-500">&larr; Previous</span>
+                <span class="block mt-1 font-semibold text-gray-900 group-hover:underline">Java string interning</span>
+              </a>
+            
+            
+              <a class="group block rounded-md p-4 hover:bg-gray-200 md:text-right" href="/posts/java-project-leyden/">
+                <span class="block text-xs text-gray-500">Next &rarr;</span>
+                <span class="block mt-1 font-semibold text-gray-900 group-hover:underline">Java Project Leyden</span>
+              </a>
+            
+          </nav>
+        
+      </div>
+    </div>
+  </body>
+</html>

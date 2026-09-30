@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		    })(window,document,'script','dataLayer','GTM-N4V97FDR');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="/dev/urandom">
+    <title>/dev/urandom — Michael Drogalis</title>
+
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900">
+  </head>
+  <body class="bg-gray-200 font-body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4V97FDR"
+		      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container w-fit md:w-[48rem] mx-auto">
+      <div class="shadow-md rounded-md bg-gray-100 my-10 p-5 md:p-10">
+        
+        <div class="flex justify-between items-baseline gap-4 text-sm text-gray-600">
+          <a class="hover:text-gray-900" href="/writing/">&larr; Writing</a>
+          
+            <a class="hover:text-gray-900" href="/writing/#everything-else">Everything else &middot; 1 of 9</a>
+          
+        </div>
+
+        <h1 class="text-2xl md:text-4xl text-gray-900 mt-6 mb-2">/dev/urandom</h1>
+
+        <time class="block text-sm text-gray-600 mt-2" datetime="2026-09-29">September 29, 2026</time>
+
+        
+
+        <div class="prose content mt-8">
+          <p>Did you know that Linux has a built-in random value firehose? It's called /dev/urandom †, and it turns your system's hardware noise into an infinite stream of randomized bytes.</p>
+<p><img src="/img/dev-urandom.jpg" alt=""></p>
+<p>For starters, /dev/urandom is a file on your operating system. You can symbolically link it, cat it, and do anything else you would with a file.</p>
+<p>But /dev/urandom is special. Unlike an ordinary file, it doesn't keep its contents on disk. When you read from it, the kernel runs code that produces random bytes on the fly.</p>
+<p>How?</p>
+<p>The kernel maintains a constantly refreshed entropy pool built from unpredictable hardware events such as:</p>
+<ul>
+<li>keyboard timings</li>
+<li>mouse movements</li>
+<li>disk activity timings</li>
+<li>interrupt timings</li>
+<li>hardware random generators</li>
+</ul>
+<p>All that noise gets blended into a single pool, which the kernel uses to generate random bytes on demand.</p>
+<p>In fact, even if you haven't heard of /dev/urandom before, you've surely used it. Nearly every language's &quot;secure random generator&quot; API ultimately reads from /dev/urandom.</p>
+<p>I happened to bump into it while exploring how Antithesis works (it injects faults into your program, whose randomness is driven by a deterministic /dev/urandom look-alike).</p>
+<p>† There's also its cousin /dev/random (no leading u), which may block when you read it. /dev/random used to provide stronger randomization, but most people now advise that /dev/urandom is nearly always an equally good choice.</p>
+
+        </div>
+
+        
+          <nav class="mt-12 pt-6 border-t border-gray-300 grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+              <a class="group block rounded-md p-4 hover:bg-gray-200" href="/posts/cs-grads-and-ai/">
+                <span class="block text-xs text-gray-500">&larr; Previous in AI</span>
+                <span class="block mt-1 font-semibold text-gray-900 group-hover:underline">CS grads and AI</span>
+              </a>
+            
+            
+              <a class="group block rounded-md p-4 hover:bg-gray-200 md:text-right" href="/posts/rich-hickey-simplicity-hard-work/">
+                <span class="block text-xs text-gray-500">Next &rarr;</span>
+                <span class="block mt-1 font-semibold text-gray-900 group-hover:underline">Rich Hickey simplicity</span>
+              </a>
+            
+          </nav>
+        
+      </div>
+    </div>
+  </body>
+</html>

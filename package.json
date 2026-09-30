@@ -1,20 +1,20 @@
 {
-  "name": "parcel-playground",
+  "name": "mdrogalis-dev",
   "version": "1.0.0",
-  "description": "",
+  "description": "www.mdrogalis.dev",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "css": "postcss src/css/base.css -o docs/css/base.css",
+    "build": "eleventy && npm run css && touch docs/.nojekyll",
+    "dev": "npm run css -- --watch & eleventy --serve"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.7.0",
+    "@11ty/eleventy": "^3.1.6",
+    "@tailwindcss/typography": "^0.5.20",
     "postcss": "^8.4.16",
-    "posthtml-include": "^1.7.4",
+    "postcss-cli": "^12.0.0",
     "tailwindcss": "^3.2.4"
-  },
-  "dependencies": {
-    "posthtml-doctype": "^1.1.1"
   }
 }

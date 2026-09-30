@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		    })(window,document,'script','dataLayer','GTM-N4V97FDR');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Proxies">
+    <title>Proxies — Michael Drogalis</title>
+
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900">
+  </head>
+  <body class="bg-gray-200 font-body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4V97FDR"
+		      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container w-fit md:w-[48rem] mx-auto">
+      <div class="shadow-md rounded-md bg-gray-100 my-10 p-5 md:p-10">
+        
+        <div class="flex justify-between items-baseline gap-4 text-sm text-gray-600">
+          <a class="hover:text-gray-900" href="/writing/">&larr; Writing</a>
+          
+            <a class="hover:text-gray-900" href="/writing/#engineering-and-career">Engineering &amp; career &middot; 4 of 8</a>
+          
+        </div>
+
+        <h1 class="text-2xl md:text-4xl text-gray-900 mt-6 mb-2">Proxies</h1>
+
+        <time class="block text-sm text-gray-600 mt-2" datetime="2026-07-09">July 9, 2026</time>
+
+        
+          <ul class="flex flex-wrap gap-2 mt-4">
+            
+              <li class="rounded-lg text-slate-200 bg-violet-800 px-2 py-1 text-xs">engineering</li>
+            
+          </ul>
+        
+
+        <div class="prose content mt-8">
+          <p>🫣 Confession: only this year did I learn what a reverse proxy is. Oops.</p>
+<p><img src="/img/proxy.jpg" alt=""></p>
+<p>A quick primer on forward and reverse proxies.</p>
+<p>To start with the obvious, a proxy is a service that sits in the middle of two programs, usually a client and server.</p>
+<p>(a) A forward proxy (think Squid and HAProxy) is the one most people are familiar with. With a forward proxy, the client intentionally communicates with another service before ultimately going to the server.</p>
+<p>The big use case for that is accessing geo-restricted content, but there are plenty of more ordinary and legal ones too: caching downloads, logging requests, blocking unwanted content.</p>
+<p>Now, a reverse proxy (think CloudFront and Nginx) is exactly the opposite.</p>
+<p>(b) With a reverse proxy, the server intentionally communicates with another service before ultimately going back to the client. This has the effect of hiding the server's true identity, which is useful for things like load balancing, server-side caching, and SSL termination.</p>
+<p>If you're still confused, an easy way to think about it is:</p>
+<ul>
+<li>
+<p>forward proxy: the client hides its identity from the server</p>
+</li>
+<li>
+<p>reverse proxy: the server hides its identity from the client</p>
+</li>
+<li>
+<p>forward proxy: the client probably hosts the proxy</p>
+</li>
+<li>
+<p>reverse proxy: the server probably hosts the proxy</p>
+</li>
+<li>
+<p>forward proxy: the client knows about it</p>
+</li>
+<li>
+<p>reverse proxy: the client doesn't know about it</p>
+</li>
+</ul>
+
+        </div>
+
+        
+          <nav class="mt-12 pt-6 border-t border-gray-300 grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+              <a class="group block rounded-md p-4 hover:bg-gray-200" href="/posts/be-nice-to-junior-people/">
+                <span class="block text-xs text-gray-500">&larr; Previous</span>
+                <span class="block mt-1 font-semibold text-gray-900 group-hover:underline">Be nice to junior people</span>
+              </a>
+            
+            
+              <a class="group block rounded-md p-4 hover:bg-gray-200 md:text-right" href="/posts/22-year-old-engineer/">
+                <span class="block text-xs text-gray-500">Next &rarr;</span>
+                <span class="block mt-1 font-semibold text-gray-900 group-hover:underline">22-year old engineer</span>
+              </a>
+            
+          </nav>
+        
+      </div>
+    </div>
+  </body>
+</html>

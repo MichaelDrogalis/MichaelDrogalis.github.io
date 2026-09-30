@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		    })(window,document,'script','dataLayer','GTM-N4V97FDR');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reservoir sampling">
+    <title>Reservoir sampling — Michael Drogalis</title>
+
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900">
+  </head>
+  <body class="bg-gray-200 font-body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4V97FDR"
+		      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container w-fit md:w-[48rem] mx-auto">
+      <div class="shadow-md rounded-md bg-gray-100 my-10 p-5 md:p-10">
+        
+        <div class="flex justify-between items-baseline gap-4 text-sm text-gray-600">
+          <a class="hover:text-gray-900" href="/writing/">&larr; Writing</a>
+          
+            <a class="hover:text-gray-900" href="/writing/#algorithms-and-data-structures">Algorithms &amp; data structures &middot; 5 of 13</a>
+          
+        </div>
+
+        <h1 class="text-2xl md:text-4xl text-gray-900 mt-6 mb-2">Reservoir sampling</h1>
+
+        <time class="block text-sm text-gray-600 mt-2" datetime="2026-07-01">July 1, 2026</time>
+
+        
+          <ul class="flex flex-wrap gap-2 mt-4">
+            
+              <li class="rounded-lg text-slate-200 bg-violet-800 px-2 py-1 text-xs">data-structures</li>
+            
+              <li class="rounded-lg text-slate-200 bg-violet-800 px-2 py-1 text-xs">algorithms</li>
+            
+          </ul>
+        
+
+        <div class="prose content mt-8">
+          <p>Pop quiz: how do you pick k random items from a data stream that may never end without knowing its size in advance or loading it all into memory?</p>
+<p>Meet reservoir sampling.</p>
+<p><img src="/img/reservoir-sampling.jpeg" alt=""></p>
+<p>Reservoir sampling is a type of algorithm for selecting a subset of items from a potentially infinite sequence.</p>
+<p>Besides using very little memory, what makes this technique cool is that each item has an EQUAL chance of being sampled.</p>
+<p>There are 1,001 use cases for reservoir sampling, but a couple of easy ones off the top of my head:</p>
+<ul>
+<li>
+<p>you have a huge SQL table and want 1,000 random rows without loading it all into memory</p>
+</li>
+<li>
+<p>you want to display a few telemetry events from a distributed architecture</p>
+</li>
+</ul>
+<p>💡 The algorithm is straightforward:</p>
+<ul>
+<li>
+<p>you make an array of size k representing the reservoir</p>
+</li>
+<li>
+<p>the first k items of the stream are directly inserted into the reservoir</p>
+</li>
+<li>
+<p>all subsequent items are added to the reservoir with probability k/n, where n is the index of the stream element</p>
+</li>
+</ul>
+<p>That last step requires a little more explanation. For stream items with index &gt; k, you:</p>
+<ul>
+<li>
+<p>pick a random number between 0 and n</p>
+</li>
+<li>
+<p>if that number is &lt; k, replace that spot in the reservoir with the new item</p>
+</li>
+<li>
+<p>otherwise, discard it</p>
+</li>
+</ul>
+<p>Each item is chosen with uniform probability, no matter how large the stream is. Yet it only uses O(k) memory.</p>
+<p>The diagram shown here uses a reservoir of size 3 and a stream with 7 items. The first 3 elements are automatically added to the reservoir, and subsequent items are sampled probabilistically.</p>
+
+        </div>
+
+        
+          <nav class="mt-12 pt-6 border-t border-gray-300 grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+              <a class="group block rounded-md p-4 hover:bg-gray-200" href="/posts/boyer-moore-majority-vote/">
+                <span class="block text-xs text-gray-500">&larr; Previous</span>
+                <span class="block mt-1 font-semibold text-gray-900 group-hover:underline">Boyer-Moore majority vote</span>
+              </a>
+            
+            
+              <a class="group block rounded-md p-4 hover:bg-gray-200 md:text-right" href="/posts/example-post/">
+                <span class="block text-xs text-gray-500">Next &rarr;</span>
+                <span class="block mt-1 font-semibold text-gray-900 group-hover:underline">Diffie-Hellman</span>
+              </a>
+            
+          </nav>
+        
+      </div>
+    </div>
+  </body>
+</html>

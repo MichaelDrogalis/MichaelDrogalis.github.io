@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .content a {
+    @apply underline font-semibold;
+  }
+
+  .content code {
+    @apply font-semibold bg-slate-200 px-2 py-1 rounded-lg text-[0.875em] text-gray-900;
+  }
+}

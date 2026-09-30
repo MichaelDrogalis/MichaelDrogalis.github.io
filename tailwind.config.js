@@ -1,9 +1,10 @@
 /** @type {import('tailwindcss').Config} */ 
 module.exports = {
   content: [
-    "./src/**/*.{html,js,ts,jsx,tsx}",
+    "./src/**/*.{html,njk,md,js,ts,jsx,tsx}",
   ],
   theme: {
+    extend: {
     colors: {
       "gray": {
         100: "hsl(210,30%,98%)",
@@ -20,7 +21,33 @@ module.exports = {
     fontFamily: {
       "body": ["Inter", "Helvetica", "Arial", "sans-serif"],
     },
-    extend: {},
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            "--tw-prose-body": theme("colors.gray[800]"),
+            "--tw-prose-headings": theme("colors.gray[900]"),
+            "--tw-prose-links": theme("colors.gray[900]"),
+            "--tw-prose-bold": theme("colors.gray[900]"),
+            "--tw-prose-counters": theme("colors.gray[600]"),
+            "--tw-prose-bullets": theme("colors.gray[600]"),
+            "--tw-prose-hr": theme("colors.gray[300]"),
+            "--tw-prose-quotes": theme("colors.gray[900]"),
+            "--tw-prose-quote-borders": theme("colors.gray[300]"),
+            "--tw-prose-captions": theme("colors.gray[600]"),
+            "--tw-prose-code": theme("colors.gray[900]"),
+            "--tw-prose-pre-code": theme("colors.gray[200]"),
+            "--tw-prose-pre-bg": theme("colors.gray[900]"),
+            "--tw-prose-th-borders": theme("colors.gray[300]"),
+            "--tw-prose-td-borders": theme("colors.gray[200]"),
+            "code::before": { content: '""' },
+            "code::after": { content: '""' },
+            maxWidth: "none",
+          },
+        },
+      }),
+    },
   },
-  plugins: []
+  plugins: [
+    require("@tailwindcss/typography"),
+  ]
 }

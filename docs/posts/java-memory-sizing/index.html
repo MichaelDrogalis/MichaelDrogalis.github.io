@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		    })(window,document,'script','dataLayer','GTM-N4V97FDR');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Java memory sizing">
+    <title>Java memory sizing — Michael Drogalis</title>
+
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900">
+  </head>
+  <body class="bg-gray-200 font-body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4V97FDR"
+		      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container w-fit md:w-[48rem] mx-auto">
+      <div class="shadow-md rounded-md bg-gray-100 my-10 p-5 md:p-10">
+        
+        <div class="flex justify-between items-baseline gap-4 text-sm text-gray-600">
+          <a class="hover:text-gray-900" href="/writing/">&larr; Writing</a>
+          
+            <a class="hover:text-gray-900" href="/writing/#java">Java &middot; 9 of 20</a>
+          
+        </div>
+
+        <h1 class="text-2xl md:text-4xl text-gray-900 mt-6 mb-2">Java memory sizing</h1>
+
+        <time class="block text-sm text-gray-600 mt-2" datetime="2026-07-30">July 30, 2026</time>
+
+        
+          <ul class="flex flex-wrap gap-2 mt-4">
+            
+              <li class="rounded-lg text-slate-200 bg-violet-800 px-2 py-1 text-xs">java</li>
+            
+          </ul>
+        
+
+        <div class="prose content mt-8">
+          <p>Did you know that since Java 10 †, the JVM will autodetect the OS's total available memory and dynamically size its memory accordingly? This works even in Docker!</p>
+<p><img src="/img/java-memory-sizing.jpeg" alt=""></p>
+<p>Around this time last year, I noticed that ShadowTraffic's JVM was using only 2 gigabytes of memory, despite the container having 8 gigs.</p>
+<p>What happened to the other 6 gigs?</p>
+<p>At first, I thought I needed to set -Xmx to set the upper limit on how much memory the JVM would get. But then I learned why this was happening in the first place.</p>
+<p>In modern Java, the JVM will automatically detect how much memory is available and default to 25% of that size. In my case, my Macbook Pro has 32 gigs of RAM, with 8 gigs dedicated to Docker.</p>
+<p>Hence, 2 gigabytes in an 8 gig environment.</p>
+<p>Additionally, instead of pinning a specific upper limit on the amount of memory the JVM gets, you want to use -XX:MaxRAMPercentage to allocate a PERCENTAGE of RAM. (And optionally its siblings, -XX:MinRAMPercentage and -XX:InitialRAMPercentage)</p>
+<p>These configs are great because they make your app more portable.</p>
+<p>Score another for modern Java.</p>
+<p>† It was later backported to Java 8, too.</p>
+
+        </div>
+
+        
+          <nav class="mt-12 pt-6 border-t border-gray-300 grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+              <a class="group block rounded-md p-4 hover:bg-gray-200" href="/posts/java-volatile/">
+                <span class="block text-xs text-gray-500">&larr; Previous</span>
+                <span class="block mt-1 font-semibold text-gray-900 group-hover:underline">Java volatile</span>
+              </a>
+            
+            
+              <a class="group block rounded-md p-4 hover:bg-gray-200 md:text-right" href="/posts/java-jit-restructuring/">
+                <span class="block text-xs text-gray-500">Next &rarr;</span>
+                <span class="block mt-1 font-semibold text-gray-900 group-hover:underline">Java JIT restructuring</span>
+              </a>
+            
+          </nav>
+        
+      </div>
+    </div>
+  </body>
+</html>
